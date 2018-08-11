@@ -28,7 +28,8 @@
             app:layout_constraintTop_toBottomOf="@+id/et_input_text"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:text="@string/btn_label_main_process_text" />
+            android:text="@string/btn_label_main_process_text"
+            android:onClick="handleProcessText" />
 
         <TextView
             android:id="@+id/tv_output_text"
