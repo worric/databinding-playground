@@ -23,7 +23,7 @@ public class MainActivityTest {
 
     @Test
     public void onAppLaunch_textIsShown() {
-        onView(withId(R.id.tv_hello_world))
+        onView(withId(R.id.tv_output_text))
                 .check(matches(withText(TEXT_VIEW_TEXT_HELLO_WORLD)));
     }
 

@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">DataBinding Playground</string>
+    <string name="hint_main_input_text">Input text…</string>
+    <string name="btn_label_main_process_text">Process text</string>
 </resources>
