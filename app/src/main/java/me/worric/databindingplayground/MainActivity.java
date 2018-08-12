@@ -2,10 +2,8 @@ package me.worric.databindingplayground;
 
 import android.arch.lifecycle.ViewModelProviders;
 import android.databinding.DataBindingUtil;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.TextUtils;
-import android.view.View;
+import android.support.v7.app.AppCompatActivity;
 
 import me.worric.databindingplayground.databinding.ActivityMainBinding;
 
@@ -21,13 +19,11 @@ public class MainActivity extends AppCompatActivity {
         mBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
         mBinding.setViewmodel(mViewModel);
         mBinding.setLifecycleOwner(this);
-    }
 
-    public void handleProcessText(View view) {
-        String textFromEditText = mBinding.etInputText.getText().toString();
-
-        if (!TextUtils.isEmpty(textFromEditText)) {
-            mViewModel.setOutputText(textFromEditText);
+        if (savedInstanceState == null) {
+            getSupportFragmentManager().beginTransaction()
+                    .add(R.id.fragment_container, MainFragment.newInstance())
+                    .commit();
         }
     }
 
