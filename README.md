@@ -1,4 +1,4 @@
-## Playground project
+## Playground project [![Build Status](https://travis-ci.org/worric/databinding-playground.svg?branch=master)](https://travis-ci.org/worric/databinding-playground)
 
 This project is a playground for tinkering with various features of Android's DataBinding library.
 
