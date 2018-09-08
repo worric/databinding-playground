@@ -1,5 +1,9 @@
 <resources>
     <string name="app_name">DataBinding Playground</string>
+
+    <!-- Main -->
     <string name="hint_main_input_text">Input text…</string>
     <string name="btn_label_main_process_text">Process text</string>
+    <string name="btn_label_main_press_me">Press me!</string>
+    <string name="toast_main_message">This is the context you\'ve been waiting for!</string>
 </resources>
