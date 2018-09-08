@@ -21,7 +21,7 @@ public class MainActivityTest {
     private static final String TOAST_TEXT = "This is the context you've been waiting for!";
 
     @Rule
-    public ActivityTestRule<MainActivity> mActivityActivityTestRule =
+    public ActivityTestRule<MainActivity> mActivityTestRule =
             new ActivityTestRule<>(MainActivity.class);
 
     @Test
@@ -61,7 +61,7 @@ public class MainActivityTest {
         onView(withId(R.id.btn_trigger_notification))
                 .perform(click());
         onView(withText(TOAST_TEXT))
-                .inRoot(withDecorView(not(mActivityActivityTestRule.getActivity().getWindow().getDecorView())))
+                .inRoot(withDecorView(not(mActivityTestRule.getActivity().getWindow().getDecorView())))
                 .check(matches(isDisplayed()));
     }
 
