@@ -10,12 +10,15 @@ import org.junit.runner.RunWith;
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.action.ViewActions.*;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
+import static android.support.test.espresso.matcher.RootMatchers.withDecorView;
 import static android.support.test.espresso.matcher.ViewMatchers.*;
+import static org.hamcrest.Matchers.not;
 
 @RunWith(AndroidJUnit4.class)
 public class MainActivityTest {
 
     private static final String INPUT_TEXT = "test";
+    private static final String TOAST_TEXT = "This is the context you've been waiting for!";
 
     @Rule
     public ActivityTestRule<MainActivity> mActivityActivityTestRule =
@@ -47,6 +50,19 @@ public class MainActivityTest {
                 .perform(click());
         onView(withId(R.id.tv_output_text))
                 .check(matches(withText(INPUT_TEXT)));
+    }
+
+    /**
+     * See <a href="https://stackoverflow.com/a/51907217/8562738">this post</a> for an explanation of
+     * why we need to match a Toast message in this way
+     */
+    @Test
+    public void onButtonPress_ToastWithTextIsShown() {
+        onView(withId(R.id.btn_trigger_notification))
+                .perform(click());
+        onView(withText(TOAST_TEXT))
+                .inRoot(withDecorView(not(mActivityActivityTestRule.getActivity().getWindow().getDecorView())))
+                .check(matches(isDisplayed()));
     }
 
 }
