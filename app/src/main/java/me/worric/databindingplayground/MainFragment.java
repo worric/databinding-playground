@@ -48,7 +48,7 @@ public class MainFragment extends Fragment {
 
         @Override
         public void onNotificationButtonClicked(View view) {
-            Toast.makeText(getContext(), "This is the context you've been waiting for!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getContext(), R.string.toast_main_message, Toast.LENGTH_SHORT).show();
         }
     };
 

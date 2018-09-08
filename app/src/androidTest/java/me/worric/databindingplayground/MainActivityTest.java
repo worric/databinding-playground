@@ -18,7 +18,6 @@ import static org.hamcrest.Matchers.not;
 public class MainActivityTest {
 
     private static final String INPUT_TEXT = "test";
-    private static final String TOAST_TEXT = "This is the context you've been waiting for!";
 
     @Rule
     public ActivityTestRule<MainActivity> mActivityTestRule =
@@ -58,9 +57,12 @@ public class MainActivityTest {
      */
     @Test
     public void onButtonPress_ToastWithTextIsShown() {
+        String expectedText = mActivityTestRule.getActivity().getResources()
+                .getString(R.string.toast_main_message);
+
         onView(withId(R.id.btn_trigger_notification))
                 .perform(click());
-        onView(withText(TOAST_TEXT))
+        onView(withText(expectedText))
                 .inRoot(withDecorView(not(mActivityTestRule.getActivity().getWindow().getDecorView())))
                 .check(matches(isDisplayed()));
     }
