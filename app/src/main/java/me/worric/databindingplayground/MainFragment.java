@@ -31,14 +31,11 @@ public class MainFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
         mViewModel = ViewModelProviders.of(getActivity()).get(MainViewModel.class);
         mBinding.setViewmodel(mViewModel);
-        mBinding.setClickListener(new ClickListener() {
-            @Override
-            public void onProcessTextClicked(View view) {
-                String textToProcess = mBinding.etInputText.getText().toString();
+        mBinding.setClickListener(view -> {
+            String textToProcess = mBinding.etInputText.getText().toString();
 
-                if (!TextUtils.isEmpty(textToProcess)) {
-                    mViewModel.setOutputText(textToProcess);
-                }
+            if (!TextUtils.isEmpty(textToProcess)) {
+                mViewModel.setOutputText(textToProcess);
             }
         });
         mBinding.setLifecycleOwner(this);
