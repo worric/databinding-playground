@@ -10,6 +10,7 @@ import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import me.worric.databindingplayground.databinding.FragmentMainBinding;
 
@@ -31,18 +32,29 @@ public class MainFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
         mViewModel = ViewModelProviders.of(getActivity()).get(MainViewModel.class);
         mBinding.setViewmodel(mViewModel);
-        mBinding.setClickListener(view -> {
+        mBinding.setClickListener(mListener);
+        mBinding.setLifecycleOwner(this);
+    }
+
+    private ClickListener mListener = new ClickListener() {
+        @Override
+        public void onProcessTextClicked(View view) {
             String textToProcess = mBinding.etInputText.getText().toString();
 
             if (!TextUtils.isEmpty(textToProcess)) {
                 mViewModel.setOutputText(textToProcess);
             }
-        });
-        mBinding.setLifecycleOwner(this);
-    }
+        }
+
+        @Override
+        public void onNotificationButtonClicked(View view) {
+            Toast.makeText(getContext(), "This is the context you've been waiting for!", Toast.LENGTH_SHORT).show();
+        }
+    };
 
     public interface ClickListener {
         void onProcessTextClicked(View view);
+        void onNotificationButtonClicked(View view);
     }
 
     public static MainFragment newInstance() {
