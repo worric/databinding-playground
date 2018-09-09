@@ -8,10 +8,13 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import static android.support.test.espresso.Espresso.onView;
-import static android.support.test.espresso.action.ViewActions.*;
+import static android.support.test.espresso.action.ViewActions.click;
+import static android.support.test.espresso.action.ViewActions.typeText;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
 import static android.support.test.espresso.matcher.RootMatchers.withDecorView;
-import static android.support.test.espresso.matcher.ViewMatchers.*;
+import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
+import static android.support.test.espresso.matcher.ViewMatchers.withId;
+import static android.support.test.espresso.matcher.ViewMatchers.withText;
 import static org.hamcrest.Matchers.not;
 
 @RunWith(AndroidJUnit4.class)
@@ -65,6 +68,20 @@ public class MainActivityTest {
         onView(withText(expectedText))
                 .inRoot(withDecorView(not(mActivityTestRule.getActivity().getWindow().getDecorView())))
                 .check(matches(isDisplayed()));
+    }
+
+    @Test
+    public void onButtonPress_nonDefaultValuesAreShown() {
+        String nameErrorText = mActivityTestRule.getActivity().getResources()
+                .getString(R.string.error_msg_main_no_coffee_chosen);
+        String numberErrorText = String.valueOf(0);
+
+        onView(withId(R.id.btn_fetch_coffee))
+                .perform(click());
+        onView(withId(R.id.tv_coffee_name))
+                .check(matches(not(withText(nameErrorText))));
+        onView(withId(R.id.tv_coffee_number))
+                .check(matches(not(withText(numberErrorText))));
     }
 
 }
