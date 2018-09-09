@@ -107,7 +107,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             android:text="@string/btn_label_main_fetch_coffee"
-            android:onClick="@{viewmodel.fetchCoffee}" />
+            android:onClick="@{viewmodel.fetchCoffee()}" />
 
     </android.support.constraint.ConstraintLayout>
 </layout>
