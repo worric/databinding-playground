@@ -74,8 +74,8 @@
 
         <ImageView
             android:id="@+id/iv_coffee_icon"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             android:contentDescription="@string/content_desc_main_coffee_icon"
@@ -98,7 +98,7 @@
             app:layout_constraintBottom_toBottomOf="@+id/iv_coffee_icon"
             app:layout_constraintStart_toEndOf="@+id/iv_coffee_icon"
             android:textAppearance="@style/TextAppearance.AppCompat.Caption"
-            android:text="@{viewmodel.coffee.name ?? @string/error_msg_main_no_coffee_chosen}" />
+            android:text="@{String.valueOf(viewmodel.coffee.number) ?? @string/error_msg_main_no_coffee_chosen}" />
 
         <Button
             android:id="@+id/btn_fetch_coffee"
