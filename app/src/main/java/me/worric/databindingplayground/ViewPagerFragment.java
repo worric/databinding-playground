@@ -31,6 +31,8 @@ public class ViewPagerFragment extends Fragment {
                 switch (position) {
                     case 0:
                         return MainFragment.newInstance();
+                    case 1:
+                        return SecondFragment.newInstance();
                     default:
                         throw new IllegalArgumentException("Unknown position in FragmentPagerAdapter: " + position);
                 }
@@ -42,6 +44,8 @@ public class ViewPagerFragment extends Fragment {
                 switch (position) {
                     case 0:
                         return "First";
+                    case 1:
+                        return "Second";
                     default:
                         throw new IllegalArgumentException("Unknown position in FragmentPagerAdapter: " + position);
                 }
@@ -49,7 +53,7 @@ public class ViewPagerFragment extends Fragment {
 
             @Override
             public int getCount() {
-                return 1;
+                return 2;
             }
         };
 
