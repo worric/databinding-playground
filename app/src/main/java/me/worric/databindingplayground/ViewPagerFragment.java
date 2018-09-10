@@ -29,7 +29,7 @@ public class ViewPagerFragment extends Fragment {
             @Override
             public Fragment getItem(int position) {
                 switch (position) {
-                    case 1:
+                    case 0:
                         return MainFragment.newInstance();
                     default:
                         throw new IllegalArgumentException("Unknown position in FragmentPagerAdapter: " + position);
@@ -40,7 +40,7 @@ public class ViewPagerFragment extends Fragment {
             @Override
             public CharSequence getPageTitle(int position) {
                 switch (position) {
-                    case 1:
+                    case 0:
                         return "First";
                     default:
                         throw new IllegalArgumentException("Unknown position in FragmentPagerAdapter: " + position);
@@ -56,4 +56,12 @@ public class ViewPagerFragment extends Fragment {
         mBinding.tabLayout.setupWithViewPager(mBinding.viewPager);
         mBinding.viewPager.setAdapter(fpa);
     }
+
+    public static ViewPagerFragment newInstance() {
+        return new ViewPagerFragment();
+    }
+
+    public ViewPagerFragment() {
+    }
+
 }
