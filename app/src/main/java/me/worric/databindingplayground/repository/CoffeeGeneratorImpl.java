@@ -19,6 +19,10 @@ public class CoffeeGeneratorImpl implements CoffeeGenerator {
         mRandom = new Random();
     }
 
+    public CoffeeGeneratorImpl(Random random) {
+        mRandom = random;
+    }
+
     @Override
     public Coffee generateCoffee() {
         String name = mNames[getRandomNumberBoundedByArrayLength()];
