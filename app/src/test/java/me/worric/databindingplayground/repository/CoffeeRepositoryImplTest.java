@@ -2,34 +2,43 @@ package me.worric.databindingplayground.repository;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.Mock;
+import org.mockito.runners.MockitoJUnitRunner;
 
 import me.worric.domain.model.Coffee;
 import me.worric.domain.repository.CoffeeRepository;
 
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.isIn;
+import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.is;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
+@RunWith(MockitoJUnitRunner.class)
 public class CoffeeRepositoryImplTest {
 
+    @Mock
+    private CoffeeGenerator mGenerator;
     private CoffeeRepository mRepository;
-    private final String[] mNames = new String[] {
-            "Teh Goodness",
-            "Teh OTHER goodness",
-            "Heartbreaker",
-            "Mister McStuffins"
-    };
 
     @Before
     public void setUp() {
-        mRepository = new CoffeeRepositoryImpl(new CoffeeGeneratorImpl());
+        mRepository = new CoffeeRepositoryImpl(mGenerator);
     }
 
     @Test
-    public void generatedCoffee_hasCorrectValues() {
-        Coffee coffee = mRepository.getOne();
+    public void onGetOne_correctlyReturnsGeneratedCoffee() {
+        final String coffeeName = "test";
+        final int coffeeNumber = 10;
+        when(mGenerator.generateCoffee())
+                .thenReturn(new Coffee(coffeeName, coffeeNumber));
 
-        assertThat(coffee.getName(), isIn(mNames));
-        assertThat("Larger than 0 and lower than 100", coffee.getNumber() > 0 && coffee.getNumber() < 100);
+        Coffee fetchedCoffee = mRepository.getOne();
+
+        verify(mGenerator).generateCoffee();
+        assertThat(fetchedCoffee.getName(), is(equalTo(coffeeName)));
+        assertThat(fetchedCoffee.getNumber(), is(equalTo(coffeeNumber)));
     }
 
 }
