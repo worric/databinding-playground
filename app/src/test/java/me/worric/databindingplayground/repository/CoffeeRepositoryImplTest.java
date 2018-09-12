@@ -10,7 +10,9 @@ import me.worric.domain.model.Coffee;
 import me.worric.domain.repository.CoffeeRepository;
 
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -34,8 +36,9 @@ public class CoffeeRepositoryImplTest {
 
         Coffee fetchedCoffee = mRepository.getOne();
 
-        assertThat(fetchedCoffee.getName(), is(coffeeName));
-        assertThat(fetchedCoffee.getNumber(), is(coffeeNumber));
+        verify(mGenerator).generateCoffee();
+        assertThat(fetchedCoffee.getName(), is(equalTo(coffeeName)));
+        assertThat(fetchedCoffee.getNumber(), is(equalTo(coffeeNumber)));
     }
 
 }
