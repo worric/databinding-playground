@@ -10,6 +10,8 @@
     <!--
     as an alternative with the TabLayout directly integrated in activity layout, see
     https://gist.github.com/chintansoni202/6a28e0a666820458520149d9d0b8aa46
+    OR
+    https://www.androidhive.info/2015/09/android-material-design-working-with-tabs/
     -->
     <android.support.design.widget.CoordinatorLayout
         android:id="@+id/coordinator_layout"
