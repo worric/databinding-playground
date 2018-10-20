@@ -17,7 +17,7 @@
         android:nestedScrollingEnabled="true"
         android:fillViewport="true">
 
-        <android.support.constraint.ConstraintLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingEnd="16dp"
@@ -61,7 +61,7 @@
                 app:layout_constraintWidth_percent="0.8"
                 tools:text="Test text" />
 
-            <android.support.constraint.Guideline
+            <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/guide_50p"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -116,6 +116,6 @@
                 android:text="@string/btn_label_main_fetch_coffee"
                 android:onClick="@{() -> viewmodel.fetchCoffee()}" />
 
-        </android.support.constraint.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 </layout>

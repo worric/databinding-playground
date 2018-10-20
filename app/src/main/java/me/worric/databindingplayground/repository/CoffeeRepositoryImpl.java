@@ -12,9 +12,13 @@ public class CoffeeRepositoryImpl implements CoffeeRepository {
         mGenerator = generator;
     }
 
-    public synchronized static CoffeeRepositoryImpl getInstance() {
+    public static CoffeeRepositoryImpl getInstance() {
         if (sInstance == null) {
-            sInstance = new CoffeeRepositoryImpl(new CoffeeGeneratorImpl());
+            synchronized (CoffeeRepositoryImpl.class) {
+                if (sInstance == null) {
+                    sInstance = new CoffeeRepositoryImpl(new CoffeeGeneratorImpl());
+                }
+            }
         }
         return sInstance;
     }
@@ -28,6 +32,12 @@ public class CoffeeRepositoryImpl implements CoffeeRepository {
     public void sendOne(Coffee coffee) {
         System.out.println("Coffee with name: " + coffee.getName() + " and number: "
                 + coffee.getNumber() + " successfully sent!");
+    }
+
+    private void doStuffToStuff() {
+        int hey = 2 + 2;
+        String theStringRepresentation = Integer.toBinaryString(hey);
+        System.out.println(theStringRepresentation);
     }
 
 }
