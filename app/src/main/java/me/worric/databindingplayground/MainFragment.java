@@ -36,7 +36,7 @@ public class MainFragment extends Fragment {
         mBinding.setLifecycleOwner(this);
     }
 
-    private ClickListener mListener = new ClickListener() {
+    private final ClickListener mListener = new ClickListener() {
         @Override
         public void onProcessTextClicked(View view) {
             String textToProcess = mBinding.etInputText.getText().toString();
